@@ -9,6 +9,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "jsdom": "^9.1.0"
+    "exec": "^0.2.1",
+    "jsdom": "^9.1.0",
+    "node-schedule": "^1.1.0",
+    "promise": "^7.1.1",
+    "request": "^2.72.0",
+    "request-progress": "^2.0.1"
   }
 }
