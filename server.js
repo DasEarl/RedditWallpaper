@@ -1,21 +1,16 @@
-var jsdom = require("jsdom"),
-    notifier = require('notifier'),
-    childProcess = require('child_process'),
-    fs = require('fs'),
+var fs = require('fs'),
+    jsdom = require("jsdom"),
+    request = require('request'),
+    notifier = require('node-notifier'),
     schedule = require("node-schedule"),
     progress = require('request-progress'),
-    request = require('request');
+    childProcess = require('child_process');
 
-function start() {
+(function start() {
     getImageUrl(function(link) {
-        download(link, function(file) {
-            setWallpaper(file);
-        });
+        download(link, setWallpaper);
     });
-}
-
-// Initial startup
-start();
+})();
 
 notifier.notify({
     title: 'RedditWallpaper',
