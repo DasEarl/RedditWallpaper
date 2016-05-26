@@ -17,12 +17,13 @@ function start() {
 // Initial startup
 start();
 
+notifier.notify({
+    title: 'RedditWallpaper',
+    message: 'Starting schedule'
+});
+
 // Cron like schedule every hour
 schedule.scheduleJob('0 */1 * * *', function() {
-    notifier.notify({
-        title: 'RedditWallpaper',
-        message: 'Starting schedule'
-    });
     start();
 });
 
