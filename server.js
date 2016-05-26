@@ -1,16 +1,29 @@
 var jsdom = require("jsdom"),
+    notifier = require('notifier'),
     childProcess = require('child_process'),
     fs = require('fs'),
     schedule = require("node-schedule"),
     progress = require('request-progress'),
     request = require('request');
 
-schedule.scheduleJob('0 */2 * * *', function() {
+function start() {
     getImageUrl(function(link) {
         download(link, function(file) {
             setWallpaper(file);
         });
     });
+}
+
+// Initial startup
+start();
+
+// Cron like schedule every hour
+schedule.scheduleJob('0 */1 * * *', function() {
+    notifier.notify({
+        title: 'RedditWallpaper',
+        message: 'Starting schedule'
+    });
+    start();
 });
 
 
